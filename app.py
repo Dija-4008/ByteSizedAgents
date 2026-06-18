@@ -16,15 +16,20 @@ if user_message:
     with st.spinner("Agent is thinking..."):
         try:
             # Connect to Bind AI's servers
-            url = "https://api.getbind.co/v1/chat/completions" # Standard Bind AI API address
+            # 1. The correct Band.ai "phone number" (API Endpoints)
+            url = "https://api.band.ai/v1/chat/completions" 
+            
+            # 2. Your identification headers
             headers = {
-                "Authorization": f"Bearer {BIND_API_KEY}",
+                "Authorization": f"Bearer {BAND_API_KEY}", # This uses your Band.ai API key
                 "Content-Type": "application/json"
             }
+            
+            # 3. The exact message package Band.ai expects
             data = {
+                "model": "band-agent", # Instructs Band to route this to your agent
                 "messages": [{"role": "user", "content": user_message}]
             }
-            
             # Send the question and get the answer
             response = requests.post(url, json=data, headers=headers)
             result = response.json()
