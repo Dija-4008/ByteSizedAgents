@@ -25,7 +25,7 @@ if user_message:
             
             data = {
                 # CHANGE THIS to your Head Agent's ID or API Name from app.band.ai
-                "model": "YOUR_HEAD_AGENT_ID_HERE", 
+                "model": "@20rummy05/head", 
                 "messages": [{"role": "user", "content": user_message}]
             }
             
